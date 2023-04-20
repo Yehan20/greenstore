@@ -1,9 +1,22 @@
 
-import HeaderStyled, { CartBtnStyled, LogoContainerStyled, NavStyled } from '../styled/header.styled'
+import HeaderStyled, { CartBtnStyled, CartContainerStyled, LogoContainerStyled, NavStyled } from '../styled/header.styled'
 import logo from '../resources/images/logo.jpg'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { GiShoppingBag } from 'react-icons/gi';
+import {useEffect, useRef,useState} from 'react'
+
+// let currentPath = '';
 const Header = () => {
+  const location = useLocation();
+  const Linkref = useRef<(HTMLAnchorElement | null)[]>([])
+  const [currentPath,setCurrentPath]=useState<String>('')
+
+
+  useEffect(()=>{
+    setCurrentPath(location.pathname)  
+  },[location])
+  
+
   return (
     <HeaderStyled>
         <LogoContainerStyled>
@@ -12,22 +25,24 @@ const Header = () => {
         <NavStyled>
             <ul>
                 <li>
-                    <Link to='/'>Home</Link>
+                    <Link  ref={el=>Linkref.current[0]=el}  className={`${Linkref.current[0]?.pathname===currentPath?'active':''}`} to='/'>Home</Link>
                 </li>
                 <li>
-                    <Link to='all/'>All</Link>
+                    <Link ref={el=>Linkref.current[1]=el}   className={`${Linkref.current[1]?.pathname===currentPath?'active':''}`}   to='/all'>All</Link>
                 </li>
                 <li>
-                    <Link to='vegetables/'>Vegetables</Link>
+                    <Link ref={el=>Linkref.current[2]=el}  className={`${Linkref.current[2]?.pathname===currentPath?'active':''}`}  to='/vegetables'>Vegetables</Link>
                 </li>
                 <li>
-                    <Link to='/fruits'>Fruites</Link>
+                    <Link ref={el=>Linkref.current[3]=el}   className={`${Linkref.current[3]?.pathname===currentPath?'active':''}`} to='/fruits'>Fruites</Link>
                 </li>
             </ul>
         </NavStyled>
+        <CartContainerStyled>
         <CartBtnStyled>
-             <GiShoppingBag color='green'/>
+             <GiShoppingBag color='green' size={"40px"}/>
         </CartBtnStyled>
+        </CartContainerStyled>
     </HeaderStyled>
   )
 }
