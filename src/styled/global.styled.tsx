@@ -15,6 +15,9 @@ img{
 a{
     text-decoration: none;
 }
+main{
+    overflow:hidden;
+}
 
 `
 export default GlobalStyles

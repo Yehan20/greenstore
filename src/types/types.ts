@@ -34,6 +34,8 @@ export interface cartProps{
   totalAmount:number;
   items:item[] |[];
   cart:item[] 
+  searchItems:item[],
   status:string;
   error?:string;
+  filterType:string;
 }

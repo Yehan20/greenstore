@@ -1,17 +1,21 @@
+import {Routes,Route, useLocation} from 'react-router-dom'
 
-import { ThemeProvider } from "styled-components"
-import Header from "./components/header"
-import GlobalStyles from "./styled/global.styled"
-import {BrowserRouter as Router,Routes,Route} from 'react-router-dom'
-import Home from "./pages/home"
-import Footer from "./components/footer"
 import { useEffect } from "react"
-import store from "./store/store"
-import { Provider } from "react-redux"
 import { useAppDispatch } from "./hooks/hooks"
 import { fetchData } from "./reducers/cartSlice"
-import Test from "./pages/test"
-fetchData
+
+import { ThemeProvider } from "styled-components"
+import GlobalStyles from "./styled/global.styled"
+
+import Footer from "./components/footer/footer"
+import Header from "./components/header/header"
+
+import All from "./pages/all/"
+import Fruits from "./pages/itemtype/fruits"
+import Vegetables from "./pages/itemtype/vegetables"
+import Home from "./pages/home"
+import { AnimatePresence } from 'framer-motion'
+
 
 
 const Colors={
@@ -26,6 +30,7 @@ const Colors={
 
 function App() {
   const dispatch = useAppDispatch();
+  const location = useLocation()
    useEffect(()=>{
         console.log('use effect ran')
         dispatch(fetchData());
@@ -33,18 +38,21 @@ function App() {
 
   return (
     <>
-
-      <Router>
         <ThemeProvider theme={Colors}>
           <GlobalStyles/>
           <Header/>
-          <Routes>
-             <Route path="/" element={<Home/>}/>
-             <Route path="/test" element={<Test/>}/> 
-          </Routes>
+            <main>
+            <AnimatePresence mode='wait'>
+            <Routes location={location} key={location.key}>
+              <Route path="/" element={<Home/>}/>
+              <Route path="/all" element={<All/>}/> 
+              <Route path="/fruits" element={<Fruits/>}/>
+              <Route path="/vegetables" element={<Vegetables/>}/>
+            </Routes>
+            </AnimatePresence>
+            </main>
           <Footer/>
         </ThemeProvider>
-        </Router>
  
     </>
   )
