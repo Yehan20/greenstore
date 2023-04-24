@@ -1,38 +1,23 @@
 import styled from "styled-components";
 
-const AllItemStyled= styled.section`
+const AllItemStyled = styled.section`
   padding:1em 2em;
   display:flex ;
   flex-wrap:wrap ;
   h2{
-    font-family:${({theme})=>theme.HeadingFont} ;
+    font-family:${({ theme }) => theme.HeadingFont} ;
    width:100% ;
    margin:0 0 0.5em 0 ;
   }
 
 
 `
-export const FruitItemStyled= styled.section`
+export const FruitItemStyled = styled.section`
   padding:1em 2em;
   display:flex ;
   flex-wrap:wrap ;
   h2{
-    font-family:${({theme})=>theme.HeadingFont} ;
-   width:100% ;
-   margin:0 0 0.5em 0 ;
-  }
-  div{
-    width:100% ;
-    justify-content:space-between ;
-  }
- 
-`
-export const VegItemStyled= styled.section`
-  padding:1em 2em;
-  display:flex ;
-  flex-wrap:wrap ;
-  h2{
-    font-family:${({theme})=>theme.HeadingFont} ;
+    font-family:${({ theme }) => theme.HeadingFont} ;
    width:100% ;
    margin:0 0 0.5em 0 ;
   }
@@ -42,8 +27,23 @@ export const VegItemStyled= styled.section`
   }
  
 `
+export const VegItemStyled = styled.section`
+  padding:1em 2em;
+  display:flex ;
+  flex-wrap:wrap ;
+  h2{
+    font-family:${({ theme }) => theme.HeadingFont} ;
+   width:100% ;
+   margin:0 0 0.5em 0 ;
+  }
+  div{
+    width:100% ;
+    justify-content:space-between ;
+  }
+ 
+`
 
-  
+
 export const SearchStyled = styled.section`
    padding:1em 2em ;
    display:flex;
@@ -54,10 +54,10 @@ export const SearchStyled = styled.section`
     border-bottom-left-radius:0.2em ;
     border:1px solid #ccc;
     outline:none ;
-    font-family:${({theme})=>theme.ParaFont} ;
+    font-family:${({ theme }) => theme.ParaFont} ;
    }
    button{
-    background-color:${({theme})=>theme.green} ;
+    background-color:${({ theme }) => theme.green} ;
     border:none ;
     padding:0.7em 1em ;
     border-bottom-right-radius:0.2em ;
@@ -68,7 +68,7 @@ export const SearchStyled = styled.section`
    }
 `
 
-export const SideBarStyled= styled.aside`
+export const SideBarStyled = styled.aside`
   width:20% ;
   border-radius:0.3em ;
   border-left:1px solid #ccc ;
@@ -79,13 +79,13 @@ export const SideBarStyled= styled.aside`
     border-top-right-radius:0.3em;
     padding:1.5em 1em ;
     margin:0 ;
-    font-family:${({theme})=>theme.ParaFont} ;
+    font-family:${({ theme }) => theme.ParaFont} ;
     color:#fff;
-    background-color:${({theme})=>theme.green} ;
+    background-color:${({ theme }) => theme.green} ;
    }
    .Active{
-    color:${({theme})=>theme.green}  !important;
-    border-color:${({theme})=>theme.green} !important ;
+    color:${({ theme }) => theme.green}  !important;
+    border-color:${({ theme }) => theme.green} !important ;
    }
    button{
     display:block ;
@@ -99,10 +99,10 @@ export const SideBarStyled= styled.aside`
     font-size:1.3rem ;
     word-spacing:1px ;
     border-radius:0.2em ;
-    font-family:${({theme})=>theme.ExtraFont} ;
+    font-family:${({ theme }) => theme.ExtraFont} ;
     &:hover{
-        color:${({theme})=>theme.green} ;
-        border-color:${({theme})=>theme.green} ;
+        color:${({ theme }) => theme.green} ;
+        border-color:${({ theme }) => theme.green} ;
     }
    }
 `
@@ -113,7 +113,7 @@ flex-wrap:wrap ;
 justify-content:space-evenly ;
 gap:1em;
 h4{
-  font-family:${({theme})=>theme.ExtraFont} ;
+  font-family:${({ theme }) => theme.ExtraFont} ;
   font-size:2rem ;
 }
     a{
@@ -130,21 +130,21 @@ h4{
     width:100% ;
     h3{
         font-size:1.1rem ;
-        font-family:${({theme})=>theme.HeadingFont} ;
+        font-family:${({ theme }) => theme.HeadingFont} ;
         font-weight:500;
         letter-spacing:1px ;
         text-transform:uppercase;
-        color:${({theme})=>theme.dark}
+        color:${({ theme }) => theme.dark}
         
     }
     div{
-        background-color:${({theme})=>theme.grey} ;
+        background-color:${({ theme }) => theme.grey} ;
         padding:1em;
     }
     p{
         margin:0.5em 0;
-        font-family:${({theme})=>theme.ExtraFont} ;
-        color:${({theme})=>theme.green};
+        font-family:${({ theme }) => theme.ExtraFont} ;
+        color:${({ theme }) => theme.green};
         font-weight:600;
     }
      img{
@@ -160,4 +160,106 @@ h4{
 
   }
 `
+
+export const SingleProductStyled = styled.div`
+    display:flex ;
+    padding:1em 3em ;
+    gap:0.3em;
+    background-color:${({ theme }) => theme.grey};
+    h3{
+      font-family:${({ theme }) => theme.HeadingFont} ;
+    color:${({ theme }) => theme.dark} ;
+      font-size:1.4rem;
+      text-transform:uppercase ;
+      margin:0 ;
+    }
+    p{
+      font-family:${({ theme }) => theme.ParaFont} ;
+      line-height:1.7 ;
+      span{
+        font-size:1.2rem ;
+        color:${({ theme }) => theme.green} ;
+        font-weight:500 ;
+      }
+    }
+    div:first-child{
+      /* border:1px solid #ccc; */
+      border-radius:0.3em ;
+      width:100% ;
+      background-color:#fff ;
+      padding:1em ;
+      img{
+        width:100% ;
+        display:block ;
+        max-width:350px ;
+        margin:auto auto ;
+        height:350px ;
+      }
+    }
+
+    div:last-child{
+      width:100% ;
+      /* border:1px solid #ccc; */
+      border-radius:0.3em ;
+      background-color:${({ theme }) => theme.grey};
+      padding:1em ;
+      p:nth-of-type(1){
+        display:flex !important ;
+
+        gap:3em;
+      }
+      button{
+        border-radius:0;
+        border:0 ;
+        color:#fff;
+        background-color:${({ theme }) => theme.green};
+        font-family:${({ theme }) => theme.ExtraFont} ;
+        padding:0.3em 1.5em;
+        cursor:pointer;
+        &:hover{
+           opacity:0.6 ;
+        }
+  
+      }
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      /* Firefox */
+      input[type=number] {
+        -moz-appearance: textfield;
+      }
+      div{
+        display:flex ;
+        margin:2em 0 2em 0 ;
+        
+        input{
+          border-radius:0;
+          padding:0.7em 1em ;
+          border:0;
+          text-align:center ;
+          max-width:120px ;
+          font-size:1rem ;
+          &:focus{
+            outline:0 ;
+          }
+        }
+        div{
+          margin-left:2em ;
+          padding:0 ;
+          margin-top:0 ;
+          margin-bottom:0 ;
+          button{
+            text-transform:uppercase;
+            letter-spacing:1px ;
+            font-size:1rem ;
+            padding:0.6em 3em ;
+          }
+        }
+      }
+    }
+`
+
 export default AllItemStyled;

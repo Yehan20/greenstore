@@ -8,10 +8,10 @@ const inital:cartProps = {
     items:[],
     searchItems:[],
     cart:[],
-    singleItem:null,
+    singleItem:{ id:0, Name: '', price: 0, ext: '',src: '', amount:0, type:''},
     singleItemState:'idle',
     singleItemError:'',
-    total:100,
+    totalPrice:0,
     totalAmount:0,
     status:'idle',
     error:'',
@@ -39,7 +39,7 @@ export const fetchData= createAsyncThunk('items/getItems',async()=>{
 export const fetchItem=  createAsyncThunk('items/getItem',async(ext:string)=>{
      try{
        const response  =await axios.get('http://localhost:3001/items/'+ext)
-       console.log(response.data)
+     //  console.log(response.data)
        return {...response.data};
 
      }catch(error:unknown){
@@ -56,6 +56,61 @@ const CartSlice =createSlice({
    name:"Cart",
    initialState:inital,
    reducers:{
+      addCart(state,action){
+         const {singleItem,amount}= action.payload;
+         const modifiedItem={
+            ...singleItem,amount:singleItem.amount + amount,price:singleItem.price * amount
+         }
+         let updatedCart:item[]=[...state.cart];
+
+         const isExisting = state.cart.filter((cartItem)=>cartItem.id===modifiedItem.id).length // checks  for a new item lengith
+       
+         if(isExisting>0){ // if there is  same item then update exisiting item other wise  add a new items
+            updatedCart = updatedCart.map((cartItem:item)=>{
+                  if(cartItem.id===singleItem.id) return {  ...cartItem,amount:cartItem.amount+ amount ,price:((singleItem.price * amount)+cartItem.price)   }
+      
+                  return cartItem
+            });
+
+            return {
+               ...state,cart:[...updatedCart]
+            }  
+        }
+        
+        // if no match return the existing items , with the modified item
+         return {
+            ...state,cart:[...updatedCart,modifiedItem]
+         }
+      },
+      calculateTotal(state){
+         const totalPrice = state.cart.reduce((initial,cartItem)=>{
+              let  total = initial + cartItem.price;
+              return total;
+         },0)
+         return {
+          ...state,totalPrice
+         }
+      },
+     emptyCart(state){
+         return {
+         ...state,cart:[]
+         }
+      },
+      removeItem(state,action){
+        const id = action.payload;
+        let cartItems = [...state.cart].filter(cartItem=>cartItem.id!==id);
+        return {
+         ...state,cart:cartItems
+       }
+        
+      },
+      reset(state){
+         //state.searchItems=state.items
+         return {
+            ...state,searchItems:state.items
+         }
+      }
+      ,
       searchItem(state,action){
 
           let filterByType =getItemsType([...state.items],state.filterType);
@@ -65,13 +120,32 @@ const CartSlice =createSlice({
 
           state.searchItems=filterByType;       
       },
-      reset(state){
-         state.searchItems=state.items
-      }
-      ,
+
       setType(state,action){
          state.filterType=action.payload;
       },
+
+ 
+
+      updateInCart(state,action){
+          const{sign,amount,id,price} = action.payload;
+          let cartItems = [...state.cart];
+           
+          // map through the array and update the requiured values
+            cartItems = cartItems.map((cartItem:item)=>{
+               if(cartItem.id===id && sign==='+') 
+               return {  ...cartItem, amount:cartItem.amount + amount , price:cartItem.price + (price / cartItem.amount)   }
+               
+               if(cartItem.id===id && sign==='-') 
+               return {  ...cartItem,amount:cartItem.amount - amount , price:cartItem.price - (price / cartItem.amount)   }
+
+               return cartItem
+           });
+
+         return{
+            ...state,cart:cartItems
+         }
+      }
   
    },
    extraReducers:(builder)=>{
@@ -99,8 +173,10 @@ const CartSlice =createSlice({
             state.singleItemState='pending'
       })
       .addCase(fetchItem.fulfilled,(state,action)=>{
-
-             state.singleItem=action.payload
+             const item  = {...action.payload};
+             item.amount=0
+            
+             state.singleItem=item;
              state.singleItemState='fetched'
 
       })
@@ -113,6 +189,7 @@ const CartSlice =createSlice({
 
 export const geTotal=(state:any)=>state.Cart.total;
 
-export const{setType,searchItem,reset} =CartSlice.actions
+export const{setType,searchItem,reset,addCart,removeItem,
+             emptyCart,calculateTotal,updateInCart} =CartSlice.actions
 
 export default CartSlice.reducer

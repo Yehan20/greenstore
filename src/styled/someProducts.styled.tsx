@@ -77,6 +77,7 @@ export const SomeProductStyled = styled.div`
   grid-template-columns:repeat(5,1fr);
   grid-gap:1em;
   grid-auto-rows:300px;
+ background-color:'red' ;
 
   article{
     background:'red';

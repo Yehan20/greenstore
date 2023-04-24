@@ -18,6 +18,21 @@ a{
 main{
     overflow:hidden;
 }
+.toggle-container{
+    display:flex;
+    align-items:center;
+    span{
+        // position:absolute;
+        left:0;
+        top:0;
+        // background:rgb(117, 162, 57);
+        padding:0.7em 0.5em;
+        display:inline-block;
+        color:#222;
+        border-radius:50%;
+        font-weight:600;
+    }
+}
 
 `
 export default GlobalStyles

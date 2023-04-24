@@ -62,36 +62,14 @@ const SomeProduct=({productItems}:someProductProps)=>{
                <img src={leaf} alt="Veg" />
                <p>50% Off  over 2kgs</p>
                <h3>Organice Vegetables</h3>
-            </SomeProductVegMotion>
-
-            
+            </SomeProductVegMotion> 
+            <Products productItems={productItems}/>    
             <SomeProductFruitMotion variants={someProductChildVarient}>
                <img src={berry} alt="Fru" />
                <p>40% Off  over 2kgs</p>
                <h3>Organice Fruits</h3>
           </SomeProductFruitMotion>
-
-               <Products productItems={productItems}/>
-                {/* {productItems.map((productItem)=>{
-                        const {id,src,Name,price,type} = productItem
-                        let URL =src
-                        return <motion.article variants={someProductChildVarient} key={id} id={type}>
-                            <img src={`http://${URL}`} alt={Name} />
-                            <div>
-                            <h3>{Name}</h3>
-                            <p>RS.<span>{price}</span></p>
-                            <div style={{padding:0}}>
-                               <FaStar/>
-                               <FaStar/>
-                               <FaStar/>
-                               <FaStar/>
-                               <FaStar/>
-                            </div>
-                            </div>
-                        </motion.article>
-                })} */}
-
-
+   
         </SomeProductMotion>
      )
 }

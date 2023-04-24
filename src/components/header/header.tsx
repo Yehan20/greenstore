@@ -6,6 +6,8 @@ import { GiShoppingBag } from 'react-icons/gi';
 import {useEffect, useRef,useState} from 'react'
 import Cart from '../cart/cart';
 import {AnimatePresence} from 'framer-motion'
+import { useAppSelector } from '../../hooks/hooks';
+import NavToggle from './navtoggle';
 
 const Header = () => {
   const location = useLocation();
@@ -13,8 +15,7 @@ const Header = () => {
   const [showCart, setShowCart] = useState<Boolean>(false)
   const [currentPath,setCurrentPath]=useState<String>('')
 
-
-
+  //const cartItemAmount = useAppSelector((state)=>state.Cart.cart.length);
 
   useEffect(()=>{
     setCurrentPath(location.pathname)  
@@ -45,8 +46,10 @@ const Header = () => {
             </ul>
         </NavStyled>
         <CartContainerStyled>
+   
         <CartBtnStyled title='Click to show Cart' onClick={()=>setShowCart(!showCart)}>
-             <GiShoppingBag color='green' size={"40px"}/>
+             <NavToggle/>
+             {/* <GiShoppingBag color='rgb(117, 162, 57)' size={"40px"}/> */}
         </CartBtnStyled>
         </CartContainerStyled>
      

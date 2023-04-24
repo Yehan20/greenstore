@@ -80,15 +80,16 @@ export const CartOverlayStyled = styled.div`
 `
 export const CartStyled = styled.div`
    background-color:#fff ;
-   width:30% ;
+   width:36% ;
    margin-left:auto ;
-   padding-top:3em ;
-   padding-left:3em ;
-   padding-right:3em ;
+   padding-top:1em ;
+   padding-left:1em ;
+  
+   padding-right:1em ;
    height:100% ;
    display:flex;
    flex-direction:column;
-   padding-bottom:2em ;
+   padding-bottom:1em ;
    h3{
     margin:0 ;
     font-family:${({theme})=>theme.HeadingFont} ;
@@ -107,18 +108,146 @@ export const CartTopStyled = styled.div`
 `
 
 export const CartBodyStyled = styled.div`
-   
+height:500px ;
+overflow-y:auto ;
+margin-top:1em ;
+margin-bottom:1em ;
+  article{
+    display:flex ;
+    align-items:center;
+    padding:0.5em 1em ;
+    gap:1em;
+    margin-bottom:0.5em ;
+    margin-top:0.4em ;
+    background-color:${({ theme }) => theme.grey};
+      
+  }
+
+
+    h3{
+      font-family:${({ theme }) => theme.HeadingFont} ;
+    color:${({ theme }) => theme.dark} ;
+      font-size:1rem;
+      text-transform:uppercase ;
+      margin:0 ;
+    }
+    p{
+      font-family:${({ theme }) => theme.ParaFont} ;
+      line-height:1.7 ;
+      margin:0.5em 0 ;
+      span{
+        font-size:1rem ;
+        color:${({ theme }) => theme.green} ;
+        font-weight:500 ;
+      }
+    }
+    div:first-child{
+      /* border:1px solid #ccc; */
+      border-radius:0.3em ;
+      width:40% ;
+      background-color:#fff ;
+      padding:1em ;
+      position:relative;
+      button{
+        background-color:transparent;
+        border:0 ;
+        position:absolute ;
+        top:-1.4em;
+        left:-1.6em;
+        z-index:3 ;
+      }
+    
+      img{
+        width:100% ;
+        display:block ;
+        min-width:50px ;
+        max-width:75px ;
+        margin:auto auto ;
+        height:70px ;
+      }
+    }
+
+    div:last-child{
+      width:60% ;
+      /* border:1px solid #ccc; */
+      border-radius:0.3em ;
+      background-color:${({ theme }) => theme.grey};
+      padding:0em 0em 0em 0 ;
+      p:nth-of-type(1){
+        display:flex !important ;
+
+        gap:3em;
+      }
+      button{
+        border-radius:0;
+        border:0 ;
+        color:#fff;
+        background-color:${({ theme }) => theme.green};
+        font-family:${({ theme }) => theme.ExtraFont} ;
+        padding:0.3em 0.5em;
+        cursor:pointer;
+        &:hover{
+           opacity:0.6 ;
+        }
+  
+      }
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      /* Firefox */
+      input[type=number] {
+        -moz-appearance: textfield;
+      }
+      div{
+        display:flex ;
+        margin:0em 0 0em 0 ;
+        padding:0 ;
+        span{
+          display:inline-block ;
+          font-family:${({ theme }) => theme.ParaFont} ;
+          border-radius:0;
+          padding:0.1em 1em ;
+          border:0;
+          background-color:#fff;
+          text-align:center ;
+         /* // max-width:100px ; */
+          min-width:50px ;
+          font-size:1rem ;
+          &:focus{
+            outline:0 ;
+          }
+        }
+
+      }
+    }
 `
 
 export const CartFooterStyled = styled.div`
     margin-top:auto ;
+    p{
+      font-family:${({theme})=>theme.HeadingFont};
+      color:#222;
+      padding:1em ;
+      font-weight:600 ;
+      text-transform:uppercase ;
+      letter-spacing:0 ;
+      display:flex ;
+      justify-content:space-between ;
+      span:last-child{
+          color:${({theme})=>theme.green}
+      }
+      background-color:${({theme})=>theme.grey};
+    }
     button{
       display:block ;
       width:100% ;
       border-radius:0.3 ;
       border:none;
       padding:0.5em 1em ;
-      margin-bottom:1em ;
+      margin-bottom:0 ;
       cursor: pointer;
       background-color:${({theme})=>theme.dark};
       font-family:${({theme})=>theme.ExtraFont};
@@ -127,11 +256,24 @@ export const CartFooterStyled = styled.div`
       text-transform:uppercase;
       letter-spacing:1px;
       cursor: pointer;
+      &:last-child{
+        margin-top:0.5em ;
+      }
     }
     #checkout{
       background-color:${({theme})=>theme.green} ;
     }
 `
 
+export const EmptyStyled=styled.div`
+   display:flex !important;
+   width:100% !important ;
+   flex-direction:column ;
+   align-items:center ;
+   justify-content:space-around ;
+   p{
+    text-align:center ;
+   }
+`
 
 export default HeaderStyled

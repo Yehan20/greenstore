@@ -22,7 +22,7 @@ export type item={
   price:number;
   ext:string;
   src:string;
-  amount?:number;
+  amount:number;
   type:string
 }
 
@@ -30,11 +30,11 @@ export type someProductProps={
    productItems:item[];
 }
 export interface cartProps{
-  total:number;
+  totalPrice:number;
   totalAmount:number;
   items:item[] |[];
   cart:item[] ;
-  singleItem:item|null ;
+  singleItem:item ;
   searchItems:item[];
   status:string;
   singleItemState:string;
