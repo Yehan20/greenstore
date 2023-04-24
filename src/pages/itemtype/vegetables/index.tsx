@@ -20,7 +20,7 @@ const Vegetables = () => {
     },[])
     
   return (
-     <>
+   <motion.div variants={pageVariantAll} initial='hidden' animate='visible'  exit='exit'>
       <Serach/>
       <VegItemStyled>
       <h2>Vegetales</h2>
@@ -28,7 +28,7 @@ const Vegetables = () => {
          <Products productItems={shuffledProducts}/>
       </ProductsContainerStyled>
       </VegItemStyled>
-     </>
+     </motion.div>
   )
 }
 

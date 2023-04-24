@@ -103,6 +103,7 @@ export const PremireProductStyled = styled.div`
    }
    width:100% ;
     article{
+      
         display:flex ;
         align-items:center;
         img{

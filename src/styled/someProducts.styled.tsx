@@ -79,6 +79,7 @@ export const SomeProductStyled = styled.div`
   grid-auto-rows:300px;
 
   article{
+    background:'red';
     border:1px solid #ccc;
     border-radius:0.3em;
     overflow:hidden;

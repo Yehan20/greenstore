@@ -88,8 +88,10 @@ export const customVarient = {
     },
     visible: {
         opacity: 1,
+        
         transition: {
-            duration: 0.1,
+         
+            duration: 0.5,
             type: 'tween',
             ease: 'easeIn',
             when: 'beforeChildren',
@@ -98,31 +100,38 @@ export const customVarient = {
 
     },
     exit:{
-        opacity:0
+        opacity:0,
+        transition: {
+         
+            duration: 0.1,
+            
+       
+        }
     }
 }
 
 export const pageVariant = {
   hidden:{
     opacity:0,
-    x:'-100vw',
+    
   } ,
   visible:{
-    x:0,
+
     opacity:1,
     transition:{
-      delay:0.3,
-      duration:0.7,
+      ease:'easeIn',
+      delay:0.5,
+      duration:0.5,
+      type:'tween',
       when:'beforeChildren',
     }
   },
   exit:{
     x:'-100vw',
-    
     transition:{
       ease:'easeOut',
-      duration:0.4,
-      type:"tween"
+      type:"tween",
+      duration:0.5,
    }
 
  }
@@ -139,15 +148,20 @@ export const pageVariantAll={
       opacity:1 ,
       x:0,
       transition:{
+        delay:0.3,
         duration:0.5,
-
-        type:'spring',stiffness:100}
+        ease:'easeOut',
+        type:'tween',
+        when: 'beforeChildren',
+        staggerChildren:1,
+    }
     },
     exit:{
      x:'-100vw',
      transition:{
-       ease:'easeIn'
-       
+        
+       ease:'easeIn',
+       duration:0.5,
     }
  
   }

@@ -6,7 +6,7 @@ import  raspberry from '../resources/images/raspberry-store.jpg'
 import  cucamber from '../resources/images/cucamber.jpg'
 import  vegCircle from '../resources/images/vegCircle.jpg'
 
-const MegaMenuStyled = styled.section`
+const MegaMenuStyled = styled.div`
   padding:1em 2em;
   font-family:${({theme})=>theme.ParaFont};
   display:grid ;

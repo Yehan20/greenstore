@@ -1,7 +1,6 @@
 import {createSlice,createAsyncThunk} from '@reduxjs/toolkit'
 import axios from 'axios'
 import { getItemsType } from '../custom';
-import { useAppSelector } from '../hooks/hooks';
 import { cartProps,item } from '../types/types';
 
 
@@ -9,6 +8,9 @@ const inital:cartProps = {
     items:[],
     searchItems:[],
     cart:[],
+    singleItem:null,
+    singleItemState:'idle',
+    singleItemError:'',
     total:100,
     totalAmount:0,
     status:'idle',
@@ -32,6 +34,21 @@ export const fetchData= createAsyncThunk('items/getItems',async()=>{
       }
      }
 
+})
+
+export const fetchItem=  createAsyncThunk('items/getItem',async(ext:string)=>{
+     try{
+       const response  =await axios.get('http://localhost:3001/items/'+ext)
+       console.log(response.data)
+       return {...response.data};
+
+     }catch(error:unknown){
+          if(error instanceof Error){
+
+            if(error.message=='Network Error') throw  new SyntaxError('network error')
+            return error.message
+          }
+     }
 })
 
 
@@ -76,6 +93,20 @@ const CartSlice =createSlice({
       .addCase(fetchData.rejected,(state,action)=>{
            state.status='rejected';
            state.error= action.error.message;
+
+      })
+      .addCase(fetchItem.pending,(state)=>{
+            state.singleItemState='pending'
+      })
+      .addCase(fetchItem.fulfilled,(state,action)=>{
+
+             state.singleItem=action.payload
+             state.singleItemState='fetched'
+
+      })
+      .addCase(fetchItem.rejected,(state,action)=>{
+             state.singleItemState='rejected';
+             state.singleItemError=action.error.message
       })
    }
 })

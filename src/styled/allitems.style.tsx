@@ -44,7 +44,7 @@ export const VegItemStyled= styled.section`
 `
 
   
-export const SearchStyled = styled.div`
+export const SearchStyled = styled.section`
    padding:1em 2em ;
    display:flex;
    input{
@@ -116,7 +116,8 @@ h4{
   font-family:${({theme})=>theme.ExtraFont} ;
   font-size:2rem ;
 }
-    article{
+    a{
+    
     border:1px solid #ccc;
     border-radius:0.3em;
     overflow:hidden;

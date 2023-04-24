@@ -1,12 +1,9 @@
-import { AnimatePresence, motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { pageVariant } from '../animations/varients'
 import MegaMenuStyled, { MenuBigChildStyled, MenuChildStyled1, MenuChildStyled2, MenuChildStyled3, MenuChildStyled4 } from '../styled/megaMenuStyled'
 
 const MegaMenu = () => {
-    const MegaMenuMotion = motion(MegaMenuStyled);
     return (
-        <MegaMenuMotion variants={pageVariant} initial='hidden' animate='visible' >
+        <MegaMenuStyled>
             <MenuChildStyled1>
                 <p>Straight from the Garden</p>
                 <h3>Fresh Fruits</h3>
@@ -33,7 +30,7 @@ const MegaMenu = () => {
                 <p>Best Price</p>
                 <h3>Organic Vegetables</h3>
             </MenuChildStyled4>
-        </MegaMenuMotion>
+        </MegaMenuStyled>
 
     )
 }

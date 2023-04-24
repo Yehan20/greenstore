@@ -15,6 +15,7 @@ import Fruits from "./pages/itemtype/fruits"
 import Vegetables from "./pages/itemtype/vegetables"
 import Home from "./pages/home"
 import { AnimatePresence } from 'framer-motion'
+import Item from './pages/itemtype/singleItem'
 
 
 
@@ -35,19 +36,20 @@ function App() {
         console.log('use effect ran')
         dispatch(fetchData());
    },[])
-
+   
   return (
     <>
         <ThemeProvider theme={Colors}>
           <GlobalStyles/>
           <Header/>
             <main>
-            <AnimatePresence mode='wait'>
-            <Routes location={location} key={location.key}>
-              <Route path="/" element={<Home/>}/>
-              <Route path="/all" element={<All/>}/> 
-              <Route path="/fruits" element={<Fruits/>}/>
-              <Route path="/vegetables" element={<Vegetables/>}/>
+            <AnimatePresence >
+            <Routes location={location} key={location.key||location.pathname}>
+              <Route  path="/" element={<Home/>}/>
+              <Route  path="/all" element={<All/>}/> 
+              <Route  path="/fruits" element={<Fruits/>}/>
+              <Route  path="/vegetables" element={<Vegetables/>}/>
+              <Route  path="/item/:id" element={<Item/>}/>
             </Routes>
             </AnimatePresence>
             </main>

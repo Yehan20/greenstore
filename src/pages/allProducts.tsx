@@ -18,7 +18,7 @@ const AllProducts = () => {
 
   return (
 
-      <ProductsContainerMotion variants={customVarient} initial='hidden' animate='visible'>
+      <ProductsContainerMotion variants={customVarient}>
         {shuffledProducts.length>0?<Products productItems={shuffledProducts}/>:<h4>Not Matching Items</h4>}
       </ProductsContainerMotion>
    

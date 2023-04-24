@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import React, { useEffect } from 'react'
-import { pageVariantAll } from '../../../animations/varients';
+import { pageVariantAll, someProductVarient } from '../../../animations/varients';
 import Products from '../../../components/products/products';
 import Serach from '../../../components/search/search'
 import { getItemsType } from '../../../custom';
@@ -11,7 +11,7 @@ import { FruitItemStyled, ProductsContainerStyled } from '../../../styled/allite
 const Fruits = () => {
     let {searchItems } = useAppSelector((state) => state.Cart);
     const dispatch = useAppDispatch();
-   //  const FruitItemVarient = motion(FruitItemStyled) 
+    const FruitItemVarient = motion(FruitItemStyled) 
     let shuffledProducts = getItemsType(searchItems,'Fruit')
 
     useEffect(()=>{
@@ -19,15 +19,15 @@ const Fruits = () => {
    },[])
 
   return (
-     <>
+     <motion.div variants={pageVariantAll} initial='hidden' animate='visible'  exit='exit'>
       <Serach/>
-      <FruitItemStyled>
+      <FruitItemVarient variants={someProductVarient}>
        <h2>Fruits</h2>
       <ProductsContainerStyled>
          <Products productItems={shuffledProducts}/>
       </ProductsContainerStyled>
-      </FruitItemStyled>
-     </>
+      </FruitItemVarient>
+     </motion.div>
   )
 }
 
