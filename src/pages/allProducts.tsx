@@ -1,11 +1,9 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import {  motion } from 'framer-motion';
 import {  getItemsType, } from '../custom';
-import { useAppDispatch, useAppSelector } from '../hooks/hooks'
+import { useAppSelector } from '../hooks/hooks'
 import { ProductsContainerStyled } from '../styled/allitems.style';
 import Products from '../components/products/products';
 import { customVarient } from '../animations/varients';
-import { useEffect } from 'react';
-import { reset } from '../reducers/cartSlice';
 
 
 const AllProducts = () => {
