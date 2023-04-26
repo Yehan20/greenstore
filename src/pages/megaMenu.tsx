@@ -15,7 +15,7 @@ const MegaMenu = () => {
             </MenuChildStyled2>
 
             <MenuBigChildStyled>
-                <h3>Organic <span>Vegetables and Fruits</span></h3>
+                <h1>Organic <span>Vegetables and Fruits</span></h1>
                 <p>Sale up to 40% off </p>
                 <p>Best price</p>
                 <Link to='/all' title='Click to visit'>Show now</Link>

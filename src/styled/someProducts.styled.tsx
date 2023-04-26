@@ -42,6 +42,17 @@ export const SomeProductVegStyled = styled.div`
     font-size:1.7rem;
   }
 
+  @media(max-width:992px){
+
+grid-column:1/-1;
+grid-row:2 ;
+}
+@media(max-width:767px){
+    
+
+    width:100% ;
+}
+
 `
 export const SomeProductFruitStyled = styled.div`
   position:relative ;
@@ -71,17 +82,31 @@ export const SomeProductFruitStyled = styled.div`
     font-size:1.7rem ;
   }
 
+  @media(max-width:992px){
+    grid-row :1 ;
+    grid-column:1/-1 ;
+
+ }
+ @media(max-width:767px){
+/*     
+       all:unset; */
+     /* grid-row:unset ; */
+     width:100% ;
+  }
+
 `
 export const SomeProductStyled = styled.div`
   display:grid ;
   grid-template-columns:repeat(5,1fr);
   grid-gap:1em;
-  grid-auto-rows:300px;
- background-color:'red' ;
+  /* grid-auto-rows:300px; */
+  grid-auto-rows:290px ;
 
+   
   article{
-    background:'red';
-    border:1px solid #ccc;
+
+    border:4px solid ${({theme})=>theme.grey} ;
+
     border-radius:0.3em;
     overflow:hidden;
     text-align:center ;
@@ -118,14 +143,46 @@ export const SomeProductStyled = styled.div`
         transition:all 250ms ease-in;
     
      }
-
+    
    
   }
-  #Fruit{
+  .Fruit{
     grid-row:2 ;
   }
-  #Vegetables{
+  .Vegetables{
     grid-row:1;
+  }
+
+  @media(max-width:992px){
+
+     grid-template-columns:1fr 1fr 1fr  !important ;
+     grid-auto-columns:100px;
+     grid-auto-rows:1fr 1fr ;
+     .Fruit{
+         grid-row:4 ;
+         /* grid-column:1 ; */
+
+     }
+     .Vegetables{
+    grid-row:3;
+  }
+  }
+  @media(max-width:767px){
+     /* grid-template-columns:repeat(auto-fit , minmax(1fr,600px)) !important; */
+     display:flex ;
+     flex-wrap:wrap ;
+     /* .Fruit, #Vegetales{
+       grid-row:unset;
+     } */
+     a{
+      flex-grow:1 ;
+     }
+  }
+  @media(min-width:1600px){
+     grid-auto-rows:350px ;
+     article{
+      height:100% ;
+     }
   }
 
 `

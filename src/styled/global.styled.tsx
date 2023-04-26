@@ -18,6 +18,10 @@ a{
 main{
     overflow:hidden;
 }
+.Toastify__toast-body > div:last-child{
+  color:#222!important;
+  font-family:'poppins',sans-serif;
+}
 .toggle-container{
     display:flex;
     align-items:center;
@@ -32,6 +36,25 @@ main{
         border-radius:50%;
         font-weight:600;
     }
+}
+
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    border-radius:10px ;
+    height: 6px;
+    z-index: 999;
+    background: rgb(117, 162, 57);
+    transform-origin: 0%;
+  }
+
+@media(min-width:1600px){
+   main{
+    padding:0 3em;
+   }
+
 }
 
 `

@@ -13,10 +13,13 @@ enum itemType{
 const SideBar = () => {
   const itemTypes = useAppSelector((state)=>state.Cart.filterType)
   const dispatch = useAppDispatch();
-
+  
+  // this will change a type and cause a re-render
   const changeType=(type:string)=>{
         dispatch(setType(type))
   }
+    
+
   return (
         <SideBarStyled>
             <h3>Filter by Categories</h3>

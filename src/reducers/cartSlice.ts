@@ -5,25 +5,29 @@ import { cartProps,item } from '../types/types';
 
 
 const inital:cartProps = {
-    items:[],
-    searchItems:[],
+    items:[], // items from api
+    searchItems:[], // searching array
     cart:[],
-    singleItem:{ id:0, Name: '', price: 0, ext: '',src: '', amount:0, type:''},
+    summary:[],
+    singleItem:{ id:0, Name: '', price: 0, ext: '',src: '', amount:0, type:'',desc:''},
     singleItemState:'idle',
     singleItemError:'',
     totalPrice:0,
     totalAmount:0,
+    toggleHide:false,
     status:'idle',
     error:'',
     filterType:'all',
+    toastMessage:{color:'default',message:''}
     
 }
 
+// async methods
 export const fetchData= createAsyncThunk('items/getItems',async()=>{
    //url='http://localhost:3001/items/ https://fruit-vegi-list-api.cyclic.app/items
      try{
-        const response = await axios.get('http://localhost:3001/items/');
-   
+        const response = await axios.get('https://fruit-vegi-list-api.cyclic.app/items');
+        //[...response.data].forEach(i=>console.table(i.Name))
         return [...response.data]
      }catch(error:unknown){
     
@@ -38,7 +42,7 @@ export const fetchData= createAsyncThunk('items/getItems',async()=>{
 
 export const fetchItem=  createAsyncThunk('items/getItem',async(ext:string)=>{
      try{
-       const response  =await axios.get('http://localhost:3001/items/'+ext)
+       const response  =await axios.get('https://fruit-vegi-list-api.cyclic.app/items/'+ext)
      //  console.log(response.data)
        return {...response.data};
 
@@ -57,8 +61,10 @@ const CartSlice =createSlice({
    initialState:inital,
    reducers:{
       addCart(state,action){
-         const {singleItem,amount}= action.payload;
-         const modifiedItem={
+         const singleItem= action.payload.singleItem;
+         const amount = action.payload.amount;
+
+         const modifiedItem:item={
             ...singleItem,amount:singleItem.amount + amount,price:singleItem.price * amount
          }
          let updatedCart:item[]=[...state.cart];
@@ -73,13 +79,15 @@ const CartSlice =createSlice({
             });
 
             return {
-               ...state,cart:[...updatedCart]
+               ...state,cart:[...updatedCart],toggleHide:!state.toggleHide
+               ,toastMessage:{color:'success',message:'Added to Basket'},summary:[],
             }  
         }
         
         // if no match return the existing items , with the modified item
          return {
-            ...state,cart:[...updatedCart,modifiedItem]
+            ...state,cart:[...updatedCart,modifiedItem],toggleHide:!state.toggleHide,
+            toastMessage:{color:'success',message:'Added to Cart'},summary:[]
          }
       },
       calculateTotal(state){
@@ -91,16 +99,27 @@ const CartSlice =createSlice({
           ...state,totalPrice
          }
       },
-     emptyCart(state){
+      checkout(state){
+          return {
+            ...state,cart:[],summary:state.cart,toggleHide:!state.toggleHide,toastMessage:{color:'info',message:`Thanks for your payment of RS: ${state.totalPrice.toString()} items will be delivered within 3 hrs`}
+          }
+      },
+       emptyCart(state){
          return {
-         ...state,cart:[]
+         ...state,cart:[],toastMessage:{message:'Cart Empty',color:'warning'},toggleHide:!state.toggleHide,totalPrice:0
          }
       },
       removeItem(state,action){
         const id = action.payload;
         let cartItems = [...state.cart].filter(cartItem=>cartItem.id!==id);
+        if(cartItems.length<1){
+          return {
+            ...state,cart:cartItems,toastMessage:{message:'Cart is Empty',color:'warning'},
+              toggleHide:!state.toggleHide
+          }
+        }
         return {
-         ...state,cart:cartItems
+         ...state,cart:cartItems , toastMessage:{color:'error',message:'Removed from Cart'},toggleHide:!state.toggleHide,
        }
         
       },
@@ -111,25 +130,32 @@ const CartSlice =createSlice({
          }
       }
       ,
+      cartRefreshOnToggle(state){
+          return {
+            ...state,summary:[],totalPrice:0, toastMessage:{message:'Please Order Something',color:'default'}
+          }
+      }
+      ,
       searchItem(state,action){
 
           let filterByType =getItemsType([...state.items],state.filterType);
 
           const regex = new RegExp(action.payload, 'i');
           filterByType= filterByType.filter((item) => regex.test(item.Name));
-
-          state.searchItems=filterByType;       
+          return {
+            ...state,searchItems:filterByType
+          }
+        //  state.searchItems=filterByType;       
       },
 
       setType(state,action){
          state.filterType=action.payload;
+         //state.searchItems=state.items;
       },
-
- 
 
       updateInCart(state,action){
           const{sign,amount,id,price} = action.payload;
-          let cartItems = [...state.cart];
+          let cartItems = [...state.cart]; // copy it to prevent mutatin the state
            
           // map through the array and update the requiured values
             cartItems = cartItems.map((cartItem:item)=>{
@@ -187,9 +213,8 @@ const CartSlice =createSlice({
    }
 })
 
-export const geTotal=(state:any)=>state.Cart.total;
 
-export const{setType,searchItem,reset,addCart,removeItem,
-             emptyCart,calculateTotal,updateInCart} =CartSlice.actions
+export const{setType,searchItem,reset,addCart,removeItem,cartRefreshOnToggle,
+             emptyCart,calculateTotal,updateInCart,checkout} =CartSlice.actions
 
 export default CartSlice.reducer

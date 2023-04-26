@@ -17,15 +17,15 @@ const SpecialItems = () => {
              <article>
                <div>
                   <MiniCardStyled>
-                    <FaCarrot color='green' size={'50px'}/>
+                    <FaCarrot color='green' />
                     <p>Always Fresh</p>
                   </MiniCardStyled>
                   <MiniCardStyled>
-                    <FaApple color='green' size={'50px'}/>
+                    <FaApple color='green' />
                     <p>Always Fresh</p>
                   </MiniCardStyled>
                   <MiniCardStyled>
-                    <FaLock color='green' size={'50px'}/>
+                    <FaLock color='green' />
                     <p>Always Fresh</p>
                   </MiniCardStyled>
                   
@@ -34,16 +34,16 @@ const SpecialItems = () => {
                <div>
                <MiniCardStyled>
                     <p>Always Fresh</p>
-                    <IoIosLeaf color='green' size={'50px'}/>
+                    <IoIosLeaf color='green' />
                   </MiniCardStyled>
                   <MiniCardStyled>
                   <p>Always Fresh</p>
-                    <GiCarrot color='green' size={'50px'}/>
+                    <GiCarrot color='green' />
                     
                   </MiniCardStyled>
                   <MiniCardStyled>
                   <p>Always Fresh</p>
-                    <GiBroccoli color='green' size={'50px'}/>
+                    <GiBroccoli color='green' />
                   
                   </MiniCardStyled>
                </div>

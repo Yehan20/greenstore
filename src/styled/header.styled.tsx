@@ -3,8 +3,43 @@ import styled from 'styled-components'
 const HeaderStyled = styled.header`
    display:grid ;
    grid-template-columns:1fr 2fr 1fr ;
-   /* align-items:center ; */
+   position:relative ;
+
    padding:1em 1em ;
+   @media(max-width:1199px){
+    grid-template-columns:1fr 2fr 1fr 1fr ;
+   }
+   @media(max-width:767px){
+    grid-template-columns:1fr 1fr 1fr ;
+    position:fixed ;
+    z-index:10 ;
+    left:0;
+    width:100%;
+    top:0;
+    background-color:#fff;
+    padding-left:1em ;
+    }
+    @media(min-width:1600px){
+      padding-left:3em;
+    padding-right:3em;
+    }
+`
+export const NavToggleStyleBtn = styled.button`
+   
+       background:transparent ;
+       border:0;
+       display:none ;
+    
+    @media(max-width:767px){
+      
+      display:block ;
+      position:fixed ;
+      top:3.5em;
+      left:2em ;
+      z-index:60 ;
+      cursor: pointer;
+    
+    }
 `
 
 export const LogoContainerStyled = styled.div`
@@ -12,15 +47,59 @@ export const LogoContainerStyled = styled.div`
     display:block ;
     max-width:200px ;
   }
+  @media(max-width:767px){
+     grid-column:2/3 ;
+     img{
+     max-width:120px ;
+     }
+    }
+
+
+
 `
+export const NavOverLayStyled= styled.div`
+
+
+  @media(max-width:1199px){
+
+ grid-column: 2 / 4;
+ 
+
+
+}
+@media(max-width:767px){
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 55;
+  transform-origin:left;
+  transform:translateX(-100vw) ;
+  opacity:0 ;
+  transition:transform 350ms ease-in-out , opacity 350ms ease-in ;
+  &.animate{
+  transform:translateX(0) ;
+  opacity:1 ;
+  }
+  
+}
+
+
+`
+
 export const NavStyled = styled.nav`
    padding-top:2em ;
+
+
    ul{
     display:flex ;
     align-items:center ;
     list-style:none ;
     justify-content:space-evenly;
     margin: 0;
+ 
    }
    li {
       font-family:${({theme})=>theme.HeadingFont} ;
@@ -52,20 +131,64 @@ export const NavStyled = styled.nav`
            }
       }
    }
+   @media(max-width:1199px){
+
+      grid-column: 2 / 4;
+    
+    ul{
+      gap:1.5em;
+    }
+   }
+   @media(max-width:767px){
+    /* grid-column: 1 / 2;
+    grid-row:1 ; */
+    position:fixed ;
+    z-index:40 ;
+    height:100% ;
+    width:60% ;
+    background-color:#fff;
+    top:0 ;
+    left:0 ;
+ 
+        ul{
+          flex-direction:column ;
+          justify-content:flex-start ;
+          padding-top:10em ;
+          height:100% ;
+          gap:3em;
+          padding-left:0 ;
+        }
+    }
+
 `
 
 export const CartContainerStyled = styled.div`
   padding-top:1em ;
+  @media(max-width:767px){
+    grid-column:-1/3 ;
+    grid-row:1 ;
+    }
 `
 
-export const CartBtnStyled = styled.button`
+export const CartBtnStyled = styled.div`
    background-color:transparent ;
    cursor: pointer;
    border:0 ;
    outline:0;
-   display:inline-block ;
-   display:block ;
+   span{
+    font-family:${({theme})=>theme.ParaFont} ;
+   }
+   div{
+      margin-left: auto ;
+   }
+   /* display:inline-block ; */
+   /* display:block ; */
    margin-left: auto ;
+  @media(max-width:767px){
+     svg{
+       width:2rem ;
+     }
+  }
 `
 
 export const CartOverlayStyled = styled.div`
@@ -94,6 +217,18 @@ export const CartStyled = styled.div`
     margin:0 ;
     font-family:${({theme})=>theme.HeadingFont} ;
    }
+   @media(max-width:992px){
+     width:40% ;
+
+   }
+   @media(max-width:992px){
+     width:50% ;
+
+   }
+   @media(max-width:767px){
+     width:70% ;
+
+   }
 `
 
 export const CartTopStyled = styled.div`
@@ -108,8 +243,9 @@ export const CartTopStyled = styled.div`
 `
 
 export const CartBodyStyled = styled.div`
-height:500px ;
+height:100% ;
 overflow-y:auto ;
+/* overflow-x:hidden ; */
 margin-top:1em ;
 margin-bottom:1em ;
   article{
@@ -152,8 +288,12 @@ margin-bottom:1em ;
         background-color:transparent;
         border:0 ;
         position:absolute ;
-        top:-1.4em;
-        left:-1.6em;
+        top:-0.5em;
+        cursor: pointer;
+        &:hover{
+          color:red;
+        }
+        left:-1em;
         z-index:3 ;
       }
     
@@ -226,7 +366,7 @@ margin-bottom:1em ;
 `
 
 export const CartFooterStyled = styled.div`
-    margin-top:auto ;
+    margin-top:0 ;
     p{
       font-family:${({theme})=>theme.HeadingFont};
       color:#222;
@@ -258,10 +398,14 @@ export const CartFooterStyled = styled.div`
       cursor: pointer;
       &:last-child{
         margin-top:0.5em ;
+         
       }
     }
     #checkout{
       background-color:${({theme})=>theme.green} ;
+    }
+    @media(max-width:767px){
+        margin-top:auto ;
     }
 `
 
@@ -270,10 +414,72 @@ export const EmptyStyled=styled.div`
    width:100% !important ;
    flex-direction:column ;
    align-items:center ;
-   justify-content:space-around ;
+   /* justify-content:space-between; */
+   height:100% ;
+   row-gap:1em;
+   padding-top:1em !important;
+   div{
+    align-self:stretch ;
+    padding:0.2em ;
+    display:block!important ;
+    height:550px ;
+    overflow:auto ;
+   }
+   table{
+    align-self:stretch ;
+    padding:0.2em ;
+ 
+ 
+    width:100% ;
+    thead{
+      font-family:${({theme})=>theme.HeadingFont};
+      font-size:0.8rem ;
+      font-weight:500 ;
+    }
+    tbody{
+      font-family:${({theme})=>theme.ParaFont};
+      font-size:0.8rem ;
+
+    }
+    img{
+      max-width:50px !important;
+      height:50px !important ;
+    }
+   }
+   h3{
+    font-family:${({theme})=>theme.HeadingFont};
+    font-size:1.2rem ;
+    text-align:center ;
+    text-transform:capitalize ;
+   }
    p{
     text-align:center ;
+    font-family:${({theme})=>theme.HeadingFont};
+    font-weight:600 ;
+    font-size:1.1rem ;
    }
+   button{
+    position:static  !important;
+    display:block ;
+      width:100% ;
+      border-radius:0.3 ;
+      border:none;
+      padding:0.5em 1em ;
+      margin-bottom:0 ;
+      margin-top:auto ;
+      cursor: pointer;
+      background-color:${({theme})=>theme.dark};
+      font-family:${({theme})=>theme.ExtraFont};
+      color:#fff;
+      font-size:1.2rem ;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      cursor: pointer;
+      &:hover{
+          color:#fff !important;
+      }
+   }
+   
 `
 
 export default HeaderStyled

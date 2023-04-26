@@ -8,6 +8,11 @@ export type ColorType={
     ExtraFont:string
   }
 
+export type NavProps={
+    //Linkref: React.MutableRefObject<(HTMLAnchorElement | null)[]>;
+   // showNav:Boolean;
+}
+
  export type CartProps={
     setShowCart:React.Dispatch<React.SetStateAction<Boolean>>;
     showCart:Boolean;
@@ -23,7 +28,9 @@ export type item={
   ext:string;
   src:string;
   amount:number;
-  type:string
+  type:string;
+  desc:string;
+
 }
 
 export type someProductProps={
@@ -34,6 +41,7 @@ export interface cartProps{
   totalAmount:number;
   items:item[] |[];
   cart:item[] ;
+  summary:item[]
   singleItem:item ;
   searchItems:item[];
   status:string;
@@ -41,4 +49,6 @@ export interface cartProps{
   singleItemError?:string;
   error?:string;
   filterType:string;
+  toggleHide:boolean;
+  toastMessage:{color:'info'| 'success'| 'warning'| 'error'|'default',message:string}
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { SearchStyled } from '../../styled/allitems.style'
 import { AiOutlineSearch } from 'react-icons/ai';
-import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
+import { useAppDispatch } from '../../hooks/hooks';
 import { searchItem } from '../../reducers/cartSlice';
 
 const Serach = () => {

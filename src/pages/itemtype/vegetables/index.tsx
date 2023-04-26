@@ -6,17 +6,16 @@ import Serach from '../../../components/search/search';
 import { getItemsType } from '../../../custom';
 import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
 import { reset } from '../../../reducers/cartSlice';
-import { FruitItemStyled, ProductsContainerStyled, VegItemStyled } from '../../../styled/allitems.style';
+import {  ProductsContainerStyled, VegItemStyled } from '../../../styled/allitems.style';
 
 const Vegetables = () => {
     const {searchItems} = useAppSelector((state) => state.Cart);
     const dispatch = useAppDispatch();
 
-//    const VegItemVariant = motion(VegItemStyled);
+    let shuffledProducts = getItemsType(searchItems,'Vegetables') // gets the vegetables from the type
 
-    let shuffledProducts = getItemsType(searchItems,'Vegetables')
     useEffect(()=>{
-         dispatch(reset())
+         dispatch(reset()) // this updates our search array
     },[])
     
   return (

@@ -1,4 +1,3 @@
-import React from 'react'
 import MegaMenu from '../megaMenu'
 import SomeProducts from '../../components/someProducts/someProducts'
 import SpecialItems from '../specialitems'

@@ -1,10 +1,10 @@
-import React from 'react'
-import { AiOutlineMinus, AiOutlinePlus,AiOutlineDelete } from 'react-icons/ai'
-import { GiShoppingBag } from 'react-icons/gi'
+
+import { AiOutlineMinus, AiOutlinePlus,AiOutlineCloseCircle } from 'react-icons/ai'
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
-import { updateInCart,calculateTotal,removeItem } from '../../reducers/cartSlice'
-import { CartBodyStyled, CartFooterStyled, EmptyStyled } from '../../styled/header.styled'
+import { updateInCart,calculateTotal,removeItem, emptyCart, checkout } from '../../reducers/cartSlice'
+import { CartBodyStyled, CartFooterStyled } from '../../styled/header.styled'
 import { item } from '../../types/types'
+import CartStatus from './cartStatus'
 
 
 const CartItems = () => {
@@ -16,19 +16,19 @@ const CartItems = () => {
          dispatch(calculateTotal());
     }
     const handleCartDelete = (id:number)=>{
-        console.log('click');
+    
         dispatch(removeItem(id));
         dispatch(calculateTotal());
     }
     return (
         <>
             <CartBodyStyled>
-                {cart.length <= 0 && <EmptyStyled><GiShoppingBag size={'200px'} color='rgb(117, 162, 57)' /><p>Bag is Empty</p></EmptyStyled>}
+                <CartStatus/>
                 {cart.map((cartItem: item) => {
-                    const { id, Name, amount, price, src, type, } = cartItem
+                    const { id, Name, amount, price, src, } = cartItem
                     return <article key={id}>
                         <div>
-                            <button onClick={()=>handleCartDelete(id)}><AiOutlineDelete size={'18px'}/></button>
+                            <button title='Click to delete' onClick={()=>handleCartDelete(id)}><AiOutlineCloseCircle size={'18px'}/></button>
                             <img src={`http://${src}`} alt={Name} />
                         </div>
                         <div>
@@ -46,6 +46,10 @@ const CartItems = () => {
             <CartFooterStyled>
                <p><span>Sub Total</span> <span>RS:{totalPrice}</span></p>
             </CartFooterStyled>
+            {cart.length>0 &&<CartFooterStyled>
+                {cart.length>0&&<button onClick={() => dispatch(emptyCart())}>Clear Cart</button>}
+                {cart.length>0&&<button onClick={()=>dispatch(checkout())} id='checkout'>Checkout</button>}
+            </CartFooterStyled>}
         </>
 
     )

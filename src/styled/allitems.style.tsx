@@ -25,7 +25,9 @@ export const FruitItemStyled = styled.section`
     width:100% ;
     justify-content:space-between ;
   }
- 
+  /* @media(max-width:767px){
+     margin-top:1em ;
+  } */
 `
 export const VegItemStyled = styled.section`
   padding:1em 2em;
@@ -40,6 +42,9 @@ export const VegItemStyled = styled.section`
     width:100% ;
     justify-content:space-between ;
   }
+  /* @media(max-width:767px){
+     margin-top:1em ;
+  } */
  
 `
 
@@ -66,13 +71,16 @@ export const SearchStyled = styled.section`
     font-weight:600 ;
 
    }
+   @media(max-width:767px){
+      margin-top:6em ;
+   }
 `
 
 export const SideBarStyled = styled.aside`
   width:20% ;
   border-radius:0.3em ;
-  border-left:1px solid #ccc ;
-  border-right:1px solid #ccc ;
+  border-left:1px solid #f4f4f4 ;
+  border-right:1px solid #f4f4f4 ;
   align-self: flex-start;
    h3{
     border-top-left-radius:0.3em ;
@@ -105,6 +113,38 @@ export const SideBarStyled = styled.aside`
         border-color:${({ theme }) => theme.green} ;
     }
    }
+
+   @media(max-width:992px){
+     width:100% ;
+     justify-content:center ;
+     display:flex ;
+     flex-direction:column ;
+     margin-bottom:1em ;
+     border-bottom:1px solid #f4f4f4 ;
+   /* //   border-right:1px solid #f4f4f4 ; */
+     h3{
+      padding: 0.5em 1em;
+      text-align:center ;
+     }
+     div{
+      flex-grow:1 ;
+      display:flex ;
+      flex-wrap:wrap ;
+      justify-content:center ;
+      button{
+        text-align:center ;
+      padding:0.5em 1em ;
+      border-radius:0 ;
+       max-width:200px ;
+       border-bottom:1px solid #f4f4f4 ;
+      }
+
+     }
+
+   }
+   @media(max-width:767px){
+      margin-top:5em ;
+   }
 `
 export const ProductsContainerStyled = styled.div`
 width:80% ;
@@ -117,9 +157,9 @@ h4{
   font-size:2rem ;
 }
     a{
-    
-    border:1px solid #ccc;
-    border-radius:0.3em;
+
+    border-radius:0.3em;    
+    border:4px solid ${({ theme }) => theme.grey} ;
     overflow:hidden;
     text-align:center ;
     display:flex;
@@ -128,6 +168,7 @@ h4{
     padding:1em 0 0em 0;
     max-width:15rem ;
     width:100% ;
+  
     h3{
         font-size:1.1rem ;
         font-family:${({ theme }) => theme.HeadingFont} ;
@@ -158,6 +199,9 @@ h4{
     
      }
 
+  }
+  @media(max-width:992px){
+     width:100% ;
   }
 `
 
@@ -260,6 +304,72 @@ export const SingleProductStyled = styled.div`
         }
       }
     }
+    @media(max-width:1199px){
+     margin-top:2em ;
+     div:last-child{
+      padding-right:0 ;
+        div{
+        button{
+          font-size: 0.9rem;
+          padding:0.5em 0.7em !important ;
+        }
+      }
+     }
+  }
+  @media(max-width:992px){
+     align-items:flex-start ;
+     margin-top:2em ;
+     div:last-child{
+      width:60% ;
+      padding-top:0 ;
+      input{
+        max-width:100px ;
+      }
+     }
+     div:first-child{
+          width:40%;
+          padding-left:0 ;
+          img{
+         height:250px ;
+      }
+     }
+     p{
+      font-size:0.9rem ;
+      margin-bottom:0 ;
+     }
+     h3{
+      font-size:1.3rem ;
+     }
+     p{
+     span{
+      font-size:1.1rem ;
+     }
+    }
+  }
+
+  @media(max-width:767px){
+    margin-top:7em!important ;
+    padding:1em 2em ;
+     flex-direction:column ;
+     div:first-child,div:last-child{
+      width:100% ;
+     }
+     div:last-child{
+      margin-top:1em ;
+      padding-left:0 ;
+      input{
+        max-width:65px !important;
+      }
+      /* div{
+        flex-wrap:wrap ;
+      } */
+      button{
+        font-size:0.8rem !important ;
+        white-space:nowrap ;
+      }
+     }
+  }
+  
 `
 
 export default AllItemStyled;

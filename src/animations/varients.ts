@@ -101,12 +101,12 @@ export const customVarient = {
     },
     exit:{
         opacity:0,
-        transition: {
-         
-            duration: 0.1,
-            
-       
-        }
+        // x:'-100vw',
+        transition:{
+            ease:'easeOut',
+            type:"tween",
+            duration:0.5,
+         }
     }
 }
 
@@ -120,8 +120,8 @@ export const pageVariant = {
     opacity:1,
     transition:{
       ease:'easeIn',
-      delay:0.5,
-      duration:0.5,
+      delay:0.1,
+      duration:1,
       type:'tween',
       when:'beforeChildren',
     }
@@ -131,37 +131,37 @@ export const pageVariant = {
     transition:{
       ease:'easeOut',
       type:"tween",
-      duration:0.5,
+      duration:1,
    }
 
  }
 }
 
-
+// this
 export const pageVariantAll={
 
     hidden:{
-       x:'100vw',
-       opacity:0
+       x:'-100vw',
+    //    opacity:0
     },
     visible:{
-      opacity:1 ,
+    //   opacity:1 ,
       x:0,
       transition:{
-        delay:0.3,
-        duration:0.5,
+        delay:0.1,
+        duration:1,
         ease:'easeOut',
         type:'tween',
-        when: 'beforeChildren',
-        staggerChildren:1,
+
     }
     },
     exit:{
      x:'-100vw',
+    //  opacity:0,
      transition:{
         
-       ease:'easeIn',
-       duration:0.5,
+       ease:'easeOut',
+       duration:1,
     }
  
   }
@@ -190,3 +190,23 @@ export const pageVariantAll={
  
   }
  }
+
+
+ export const shoppingVarient ={
+    hidden:{
+        x:0,
+        y:0,
+    },
+    animate:{
+         x:[1,5,-5,1],
+        
+         transition:{
+           x:{ repeat:Infinity,
+            duration:0.1,
+           },
+      
+         }
+       
+    }
+   }
+   

@@ -28,7 +28,10 @@ border-radius:0.3em;
  display:flex;
  flex-direction:column;
  justify-content:center; 
- max-width:590px ;
+ /* background-color:red ; */
+
+ /* max-width:590px ; */
+ width:48% !important ;
  min-height:250px;
  overflow:hidden ;
  position:relative ;
@@ -71,6 +74,10 @@ border-radius:0.3em;
     transition: transform 250ms ease-in ;
   
  }
+ @media(max-width:767px){
+     width:100% !important ;
+ }
+
 `
 // export const SpecialVegStyled = styled.div`
 // border-radius:0.3em;
@@ -96,6 +103,11 @@ border-radius:0.3em;
 export const PremireProductStyled = styled.div`
    margin-bottom:3em ;
    margin-top:3em ;
+
+     svg{
+      font-size:3rem ;
+     }
+ 
    h3{
      text-align:center ;
      color:${({theme})=>theme.dark};
@@ -118,6 +130,50 @@ export const PremireProductStyled = styled.div`
         width:25% ;
         margin-top:auto ;
     }
+
+    @media(max-width:1199px){
+     svg{
+       font-size:2rem;
+
+     }
+     img{
+      max-width:300px !important ;
+     }
+   }
+    @media(max-width:992px){
+
+     svg{
+       font-size:1.5rem;
+     }   
+     p{
+      font-size:0.9rem ;
+     }
+   }
+   @media(max-width:767px){
+   
+      article{
+         
+         flex-wrap:wrap ;
+         align-content:center ;
+         justify-content:center ;
+         gap:1em;
+         /* div{
+            width:48% ;
+         } */
+         div{
+         width:80% ;
+         margin:1em auto;
+      }
+         img{
+            width:100% ;
+            max-width:500px !important ;
+         }
+      }
+   p{
+     
+   }
+     
+ }
 `
 export const MiniCardStyled = styled.div`
   background-color:#f5f5f5 ;

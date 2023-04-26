@@ -43,7 +43,6 @@ const getItemsType=(items:item[],filterType:string)=>{
   return updatedItems;  
 }
 
-
 const getFruits = (items:item[])=>items.filter((item)=>item.type==='Fruit')
 
 const getVeg = (items:item[])=>items.filter((item)=>item.type==='Vegetables')
@@ -52,6 +51,5 @@ export {
       getCustomItems,
       getFruits,
       getVeg,
-
       getItemsType
 }

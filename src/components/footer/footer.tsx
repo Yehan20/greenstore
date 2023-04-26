@@ -24,7 +24,7 @@ const galleryImgs: string[] =
     miniGalleryImg7,
     miniGalleryImg8,
     miniGalleryImg9
-  ]
+  ] // make it image so easily can loop
 
 const Footer = () => {
 
@@ -59,16 +59,16 @@ const Footer = () => {
             <h3>Information</h3>
             <ul>
               <li>
-                <Link to='https://google.com/'>About Us</Link>
+                <Link target='_blank' to='https://google.com/'>About Us</Link>
               </li>
               <li>
-                <Link to='https://google.com/'>Testimonials</Link>
+                <Link target='_blank' to='https://google.com/'>Testimonials</Link>
               </li>
               <li>
-                <Link to='https://google.com/'>Privacy Policy</Link>
+                <Link target='_blank' to='https://google.com/'>Privacy Policy</Link>
               </li>
               <li>
-                <Link to='https://google.com/'>Jobs</Link>
+                <Link target='_blank' to='https://google.com/'>Jobs</Link>
               </li>
             </ul>
         </FooterInformationStyled>

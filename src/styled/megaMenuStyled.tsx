@@ -17,6 +17,16 @@ const MegaMenuStyled = styled.div`
   gap:1.2em; 
   grid-auto-rows:220px ;
   overflow:hidden ;
+  @media(max-width:767px){
+      grid-template-columns:1fr 1fr ;
+       grid-template-areas: "MenuItem1 MenuItem1"
+                            "MenuItem2 MenuItem2"
+                            "BigMenu   BigMenu"
+                            "MenuItem3 MenuItem3"
+                            "MenuItem4 MenuItem4" 
+        ; 
+        grid-auto-rows:1fr ;
+  }
   div{
     padding:1em 1em 1em 1.5em ;
     background-color:#333 ;
@@ -77,7 +87,7 @@ export const MenuBigChildStyled = styled.div`
    justify-content:center!important ;
    text-align:center ;
    align-items:center ;
-   h3{
+   h1{
     border-top:2px solid #fff ;
     border-bottom:2px solid #fff ;
     padding: 1em 0 ;
