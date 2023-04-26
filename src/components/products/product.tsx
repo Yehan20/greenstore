@@ -33,9 +33,7 @@ const Product: React.FC = () => {
     dispatch(calculateTotal())
   }
 
-  const notify=()=>{
 
-  }
 
   if (singleItemState === LoadingStatus.loading) {
     return <Loader />
@@ -49,7 +47,7 @@ const Product: React.FC = () => {
   return (
     <>
       <div>
-        <img src={`http://${singleItem.src}`} alt={singleItem.Name} />
+        <img src={`https://${singleItem.src}`} alt={singleItem.Name} />
       </div>
       <div>
         <h3>{singleItem.Name}</h3>

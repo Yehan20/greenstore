@@ -11,7 +11,7 @@ const Products = ({ productItems }: someProductProps) => {
                 const { id, src, Name, price, type, ext } = productItem
                 return <Link title='View More' to={`/item/${ext}`} key={id} className={type}>
                     <article >
-                        <img src={`http://${src}`} alt={Name} />
+                        <img src={`https://${src}`} alt={Name} />
                         <div className='stats'>
                             <h3>{Name}</h3>
                             <p>RS.<span>{price}</span></p>
