@@ -14,7 +14,7 @@ Link to the application: https://yn-green-store.netlify.app/
 - How to Add Thunk pattern in Redux
 - How to Add Toast Messages show to Notifcations
 - How to Add Framer Motion Animations to Components
-- How to deploy a MySQL database on Heroku through ClearDB
+
 
 ## Features
 
@@ -35,6 +35,4 @@ Link to the application: https://yn-green-store.netlify.app/
 - Nodejs + Express ( For Api)
 - Styled Components
 
-
-## Get started
 
