@@ -40,7 +40,7 @@ const CartStatus = () => {
           {summary.map((item)=>{
              return <tr key={item.id}>
                 <td>{item.Name}</td>
-                <td><img src={`http://${item.src}`} alt={item.Name} /></td>
+                <td><img src={`https://${item.src}`} alt={item.Name} /></td>
                 <td>{item.amount}</td>
                 <td>{item.price}</td>
              </tr>

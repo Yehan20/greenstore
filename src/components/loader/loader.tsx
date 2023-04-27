@@ -5,7 +5,7 @@ const Loader = () => {
     <ThreeCircles
   height="100"
   width="100"
-  color="#4fa94d"
+  color="rgb(117, 162, 57)"
   wrapperStyle={{}}
   wrapperClass=""
   visible={true}

@@ -18,31 +18,31 @@ const SpecialItems = () => {
                <div>
                   <MiniCardStyled>
                     <FaCarrot color='green' />
-                    <p>Always Fresh</p>
+                    <p>Fresh</p>
                   </MiniCardStyled>
                   <MiniCardStyled>
                     <FaApple color='green' />
-                    <p>Always Fresh</p>
+                    <p>Clean</p>
                   </MiniCardStyled>
                   <MiniCardStyled>
                     <FaLock color='green' />
-                    <p>Always Fresh</p>
+                    <p>No Chemicals</p>
                   </MiniCardStyled>
                   
                </div>
                <img src={cherry} alt="Cherry" />
                <div>
                <MiniCardStyled>
-                    <p>Always Fresh</p>
+                    <p>Tasty</p>
                     <IoIosLeaf color='green' />
                   </MiniCardStyled>
                   <MiniCardStyled>
-                  <p>Always Fresh</p>
+                  <p>Garden Grown</p>
                     <GiCarrot color='green' />
                     
                   </MiniCardStyled>
                   <MiniCardStyled>
-                  <p>Always Fresh</p>
+                  <p>Healthy</p>
                     <GiBroccoli color='green' />
                   
                   </MiniCardStyled>

@@ -52,7 +52,7 @@ const Nav: React.FC= () => {
                 <Link ref={el => Linkref.current[2] = el} className={`${Linkref.current[2]?.pathname === currentPath ? 'active' : ''}`} to='/vegetables'>Vegetables</Link>
               </li>
               <li>
-                <Link ref={el => Linkref.current[3] = el} className={`${Linkref.current[3]?.pathname === currentPath ? 'active' : ''}`} to='/fruits'>Fruites</Link>
+                <Link ref={el => Linkref.current[3] = el} className={`${Linkref.current[3]?.pathname === currentPath ? 'active' : ''}`} to='/fruits'>Fruits</Link>
               </li>
             </ul>
 

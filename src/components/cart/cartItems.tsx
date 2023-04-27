@@ -29,7 +29,7 @@ const CartItems = () => {
                     return <article key={id}>
                         <div>
                             <button title='Click to delete' onClick={()=>handleCartDelete(id)}><AiOutlineCloseCircle size={'18px'}/></button>
-                            <img src={`http://${src}`} alt={Name} />
+                            <img src={`https://${src}`} alt={Name} />
                         </div>
                         <div>
                             <h3>{Name}</h3>

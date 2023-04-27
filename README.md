@@ -1,9 +1,9 @@
 # Green Store
 
-An Grocery Market web Aplucation where users can purchase fruits and vegetables ,search and view
+An Grocery Market web Aplication with ecommerce cart where users can purchase fruits and vegetables ,search and view
 planning to add fake payment gateway in the future.
 
-Link to the application: NA
+Link to the application: https://yn-green-store.netlify.app/
 
 
 ## Lessons learned
